@@ -1,0 +1,40 @@
+<body>
+
+</body>
+
+<template name="adminView">
+    <h2>Efendi tonik sayfası</h2>
+    <ul>
+      {{#each posts}}
+        <li class="title {{selectedClass}}"> {{Title}} </li>
+        {{#if showSelectedTitle}}
+          <input type="button" class="remove" value="Remove Content">
+          {{> editContent }}
+        {{/if}}
+        {{/each}}
+    </ul>
+    {{> addContent }}
+
+</template>
+<template name="addContent">
+    <h3>Toniklere yeni okunacak bir şey ver</h3>
+    <div>
+      <form>
+        <p>Başlık</p>
+        <input type="text" class="text" name="title">
+        <p>İçerik </p><textarea type="text" class="textarea" name="content"></textarea><br>
+        <input type="submit" value="Tonikle">
+      </form>
+    </div>
+</template>
+<template name="editContent">
+<div>
+  <form>
+    <p>Başlık</p>
+    <input type="text" class="text" name="title" value= {{ Title }}>
+    <p>İçerik</p>
+    <textarea class="textarea" name="content" value= {{ Content}}></textarea>
+    <input type="submit" value="Tonikle">
+  </form>
+  </div>
+</template>

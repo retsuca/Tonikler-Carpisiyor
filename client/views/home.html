@@ -1,0 +1,37 @@
+<head>
+    <title>Toniklerin Efendisi</title>
+</head>
+<body>
+    {{> loginButtons }}
+    {{> addPlayerForm}}
+
+</body>
+<template name="postList">
+  <h2>Tonikler Diriliyor</h2>
+  <div>
+    <ul>
+      {{#each posts}}
+        <li>
+          <p>{{Title}}</p>
+        </li>
+          <pre>{{Content}}</pre>
+      {{/each}}
+    </ul>
+</div>
+</template>
+
+<template name="main">
+    <h1>Tonikdibi</h1>
+    {{> yield}}
+    <hr />
+    <p>Copyright &copy; Tonikdibi, 2015-2015.</p>
+</template>
+
+<template name="addPlayerForm">
+    {{#if currentUser}}
+        <form>
+            <input type="text" name="postTitle">
+            <input type="submit" value="Add Player">
+        </form>
+    {{/if}}
+</template>
