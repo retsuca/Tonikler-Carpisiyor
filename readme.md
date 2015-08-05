@@ -13,4 +13,4 @@ Not ready.
 
 ## Author
 
-A. Can UÐUR (acuster41) and Zehra ÖZER (ozerz).
+A. Can UGUR (acuster41) and Zehra Ã–ZER (ozerz).
