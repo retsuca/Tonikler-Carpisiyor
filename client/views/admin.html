@@ -6,8 +6,8 @@
     <h2>Efendi tonik sayfası</h2>
     <ul>
       {{#each posts}}
-        <li class="title {{selectedClass}}"> {{Title}} </li>
-        {{#if showSelectedTitle}}
+        <li class="title selectable {{selectedClass}}"> {{Title}} </li>
+        {{#if showSelected}}
           <input type="button" class="remove" value="Remove Content">
           {{> editContent }}
         {{/if}}
@@ -28,13 +28,13 @@
     </div>
 </template>
 <template name="editContent">
-<div>
-  <form>
-    <p>Başlık</p>
-    <input type="text" class="text" name="title" value= {{ Title }}>
-    <p>İçerik</p>
-    <textarea class="textarea" name="content" value= {{ Content}}></textarea>
-    <input type="submit" value="Tonikle">
-  </form>
+  <div>
+    <form>
+      <p>Başlık</p>
+      <input type="text" class="text" name="title" value= {{ Title }}>
+      <p>İçerik</p>
+      <textarea class="textarea" name="content" value= {{ Content}}></textarea>
+      <input type="submit" value="Tonikle">
+    </form>
   </div>
 </template>

@@ -1,0 +1,21 @@
+<template name="comment">
+  <div>
+    {{#each comments}}
+      {{#if showSelected }}
+        <h5><a href= posts/{{titleId}} >{{titleId}}</a></h5>
+        <div class="post selectable">
+          {{Comment}}
+        </div>
+
+      {{/if}}
+    {{/each}}
+  </div>
+  <h2>Comment</h2>
+  <div>
+    <form>
+      <p>Yorum</p>
+      <textarea class="textarea" name="comment" value= "Yorumunuz?"></textarea>
+      <input type="submit" value="Tonikle">
+    </form>
+  </div>
+</template>

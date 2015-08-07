@@ -1,9 +1,10 @@
 Template.adminView.events({
-  'click .title': function(){
+  'click .selectable': function(){
     var titleId = this._id;
     var selectedTitle = Session.get('selectedTitle');
+
     if(titleId == selectedTitle){
-      Session.set('selectedTitle', "titleId");
+      Session.set('selectedTitle', "");
     }
     else Session.set('selectedTitle', titleId);
   },
@@ -11,6 +12,18 @@ Template.adminView.events({
     var selectedTitle = Session.get('selectedTitle');
     postList.remove(selectedTitle);
 }
+});
+
+Template.postList.events({
+  'click .selectable': function(){
+    var titleId = this._id;
+    var selectedTitle = Session.get('selectedTitle');
+
+    if(titleId == selectedTitle){
+      Session.set('selectedTitle', "");
+    }
+    else Session.set('selectedTitle', titleId);
+  },
 });
 
 Template.addContent.events({
@@ -23,7 +36,6 @@ Template.addContent.events({
          Content: Content,
          created: new Date().getTime()
      });
-    console.log(title);
   }
 });
 
@@ -34,6 +46,19 @@ Template.editContent.events({
     var Title = event.target.title.value;
     var Content = event.target.content.value;
     postList.update(selectedTitle, {$set: {Title: Title, Content: Content}});
+  }
+});
 
+Template.comment.events({
+  "submit form": function(event){
+    event.preventDefault();
+    var selectedTitle = this._id;
+    var titleId = selectedTitle;
+    var Comment = event.target.comment.value;
+    comment.insert({
+         titleId: titleId,
+         Comment: Comment,
+         created: new Date().getTime()
+     });
   }
 });

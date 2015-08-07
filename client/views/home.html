@@ -3,18 +3,22 @@
 </head>
 <body>
     {{> loginButtons }}
-    {{> addPlayerForm}}
-
+    {{> navigation }}
 </body>
 <template name="postList">
   <h2>Tonikler Diriliyor</h2>
   <div>
     <ul>
       {{#each posts}}
-        <li>
-          <p>{{Title}}</p>
-        </li>
-          <pre>{{Content}}</pre>
+        <h3><a href= posts/{{_id}} >{{Title}}</a></h3>
+        <div class="post selectable">
+          {{Content}}
+        </div>
+        <div>
+          {{#if showSelected}}
+            {{> comment }}
+          {{/if}}
+        </div>
       {{/each}}
     </ul>
 </div>
@@ -27,11 +31,13 @@
     <p>Copyright &copy; Tonikdibi, 2015-2015.</p>
 </template>
 
-<template name="addPlayerForm">
-    {{#if currentUser}}
-        <form>
-            <input type="text" name="postTitle">
-            <input type="submit" value="Add Player">
-        </form>
-    {{/if}}
+<template name="navigation">
+          <nav  class="navbar navbar-default">
+            <a href="{{pathFor route='home'}}">Home</a>
+            {{#unless currentUser}}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            {{/unless}}
+            <a href="{{pathFor route='admin'}}">Admin</a>
+          </nav>
 </template>
