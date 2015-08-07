@@ -1,23 +1,11 @@
 .selected{
     background-color: yellow;
 }
-
-body::-webkit-scrollbar {
-    width: 1em;
+.at-form{
+max-width: 500px;
 }
-
-body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-
 textarea {
-    width: 500px;
+    min-width: 500px;
     min-height: 50px;
     font-family: Arial, sans-serif;
     font-size: 13px;
@@ -25,6 +13,6 @@ textarea {
     padding: 5px;
 }
 
-.noscroll {
-    overflow: hidden;
+.post{
+  white-space: pre-line;
 }
