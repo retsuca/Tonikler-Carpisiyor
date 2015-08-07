@@ -1,6 +1,6 @@
 Template.postList.helpers({
   'posts': function(){
-    return postList.find({}, {sort: {created:-1}});
+    return postList.find({}, {sort: {createdAt:-1}});
   },
   'showSelected': function(){
     var titleId = this._id;
