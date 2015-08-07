@@ -3,8 +3,7 @@
 </head>
 <body>
     {{> loginButtons }}
-    {{> addPlayerForm}}
-
+     {{> navigation}}
 </body>
 <template name="postList">
   <h2>Tonikler Diriliyor</h2>
@@ -34,4 +33,25 @@
             <input type="submit" value="Add Player">
         </form>
     {{/if}}
+</template>
+
+<template name="navigation">
+<nav class="navbar navbar-white">
+  <div class="container-fluid">
+    <div class="navbar-header ">
+      <a class="navbar-brand" href="{{pathFor route='home'}}">Tonikler Çarpışıyor !</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active "><a href="{{pathFor route='home'}}">Ana Sayfa</a></li>
+        {{#unless currentUser}}
+        <li><a href="/register">Kayıt</a></li>
+        <li> <a href="/login">Giriş</a></li>
+         {{/unless}}
+        <li><a href="/admin">Admin</a></li>
+        <li><a href="{{pathFor route='about'}}">Hakkında</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 </template>
