@@ -1,20 +1,35 @@
 <template name="comment">
   <div>
     {{#each comments}}
-      {{#if showSelected }}
-        <h5><a href= posts/{{titleId}} >{{titleId}}</a></h5>
-        <div class="post selectable">
-          {{Comment}}
+        <div class="post">
+          {{comment}}
+        <div>
+          {{> replyComment }}
+            {{#each replys}}
+              <div class="post reply">
+                {{reply}}
+              </div>
+              {{> replyComment }}
+            {{/each}}
+            </div>
         </div>
-
-      {{/if}}
     {{/each}}
   </div>
   <h2>Comment</h2>
   <div>
-    <form>
+    <form class="comment">
       <p>Yorum</p>
       <textarea class="textarea" name="comment" value= "Yorumunuz?"></textarea>
+      <input type="submit" value="Tonikle">
+    </form>
+  </div>
+</template>
+
+<template name="replyComment">
+  <div>
+    <form class="reply">
+      <p>Yorum'a yorum</p>
+      <textarea class="textarea" name="reply" value= "Cevabınız?"></textarea>
       <input type="submit" value="Tonikle">
     </form>
   </div>

@@ -9,8 +9,15 @@ Schemas.postList = new SimpleSchema({
   Content: {
     type: String,
     autoform: {
-      rows: 5
+      afFieldInput: {
+        type: 'summernote',
+        class: 'editor'
+      }
     }
+  },
+  category: {
+    type: String,
+    allowedValues: ["Genel", "Teknoloji", "Nasıl Yapsam", "Yazılım", "Oyun", "İnternet", "Mobil"]
   },
   createdAt: {
     type: Date,
@@ -43,4 +50,5 @@ Schemas.postList = new SimpleSchema({
 });
 
 postList.attachSchema(Schemas.postList);
+
 comment = new Mongo.Collection('comment');

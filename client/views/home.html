@@ -10,10 +10,9 @@
   <div>
     <ul>
       {{#each posts}}
-        <h3><a href= posts/{{_id}} >{{Title}}</a></h3>
-        <div class="post selectable">
-          {{Content}}
-        </div>
+      <h3><a href= "{{pathFor 'post' _id=this._id }}">{{Title}}</a></h3>
+      <h4><a href= "{{pathFor 'category' _id=category}}">{{category}}</a></h4>
+        <div class="post">{{{Content}}}</div>
         <div>
           {{#if showSelected}}
             {{> comment }}
@@ -38,6 +37,6 @@
             <a href="/register">Register</a>
             <a href="/login">Login</a>
             {{/unless}}
-            <a href="{{pathFor route='admin'}}">Admin</a>
+            <a href="/admin">Admin</a>
           </nav>
 </template>

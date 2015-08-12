@@ -1,64 +1,35 @@
-Template.adminView.events({
-  'click .selectable': function(){
-    var titleId = this._id;
-    var selectedTitle = Session.get('selectedTitle');
-
-    if(titleId == selectedTitle){
-      Session.set('selectedTitle', "");
-    }
-    else Session.set('selectedTitle', titleId);
-  },
-  'click .remove': function(){
-    var selectedTitle = Session.get('selectedTitle');
-    postList.remove(selectedTitle);
-}
-});
-
-Template.postList.events({
-  'click .selectable': function(){
-    var titleId = this._id;
-    var selectedTitle = Session.get('selectedTitle');
-
-    if(titleId == selectedTitle){
-      Session.set('selectedTitle', "");
-    }
-    else Session.set('selectedTitle', titleId);
-  },
-});
-
-Template.addContent.events({
-  'submit form': function(event){
+Template.comment.events({
+  "submit .comment": function(event){
     event.preventDefault();
-    var Title = event.target.title.value;
-    var Content = event.target.content.value;
-    postList.insert({
-         Title: Title,
-         Content: Content,
-         created: new Date().getTime()
+    var selectedTitle = this._id;
+    var titleId = selectedTitle;
+    var commentt = event.target.comment.value;
+    comment.insert({
+         titleId: titleId,
+         comment: commentt,
+         createdAt: new Date().getTime()
      });
   }
 });
 
-Template.editContent.events({
-  "submit form": function(event){
+Template.replyComment.events({
+  "submit .reply": function(event){
     event.preventDefault();
-    var selectedTitle = Session.get('selectedTitle');
-    var Title = event.target.title.value;
-    var Content = event.target.content.value;
-    postList.update(selectedTitle, {$set: {Title: Title, Content: Content}});
-  }
-});
+    var parentId = this._id;
+    if(typeof parentId === 'undefined')
+      {
+        parentId= this.disscussionId;
+    }
 
-Template.comment.events({
-  "submit form": function(event){
-    event.preventDefault();
-    var selectedTitle = this._id;
-    var titleId = selectedTitle;
-    var Comment = event.target.comment.value;
-    comment.insert({
-         titleId: titleId,
-         Comment: Comment,
-         created: new Date().getTime()
+    console.log(parentId);
+    var reply = event.target.reply.value;
+    comment.update({_id: parentId},
+      {$push:{
+         replys:{
+           disscussionId: parentId,
+           reply: reply,
+           createdAt: new Date().getTime()}
+      }
      });
   }
 });

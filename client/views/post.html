@@ -1,0 +1,11 @@
+<template name="post">
+  <h2>Posts</h2>
+  {{#each posts}}
+    <h3><a href= "{{pathFor 'post' _id=this._id }}">{{Title}}</a></h3>
+    <h4><a href= "{{pathFor 'category' _id=category}}"> {{category}}</a></h4>
+    <div class="post">{{{Content}}}</div>
+    {{#if renderComment}}
+      <div>{{> comment }}</div>
+    {{/if}}
+  {{/each}}
+</template>

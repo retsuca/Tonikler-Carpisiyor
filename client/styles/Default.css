@@ -14,5 +14,10 @@ textarea {
 }
 
 .post{
-  white-space: pre-line;
+  border: 2px solid;
+}
+
+.reply{
+  margin: 15px;
+  font-size: 8px;
 }
