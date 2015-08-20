@@ -9,6 +9,12 @@ Template.comment.events({
          comment: commentt,
          createdAt: new Date().getTime()
      });
+  },
+  "click .replyButton": function(){
+    console.log(this);
+    console.log($(this).html);
+    console.log($(this).html.children('.replyComment'));
+    $(this).children('.replyComment').toggle();
   }
 });
 

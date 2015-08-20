@@ -28,3 +28,21 @@ Template.post.helpers({
     else return true;
   }
 });
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+          });
+          function MyCtrl($scope) {
+              angular.element(document).ready(function () {
+                $("#demo").jstree({
+                             "checkbox" : {
+                              "keep_selected_style" : false
+                               },
+                               "plugins" : [ "checkbox","wholerow" ]
+                          });
+                        });
+          }
+$( document ).ready(function() {
+
+  });

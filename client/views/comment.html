@@ -1,17 +1,23 @@
 <template name="comment">
   <div>
     {{#each comments}}
-        <div class="post">
-          {{comment}}
-        <div>
-          {{> replyComment }}
-            {{#each replys}}
-              <div class="post reply">
-                {{reply}}
+        <div class="containerComment">
+          <ul class="nested">
+            <li>
+              <div class="comment">
+                {{comment}}
+                <p><a class="replyButton" href="#">Cevapla</a></p>
+                {{> replyComment}}
               </div>
-              {{> replyComment }}
-            {{/each}}
-            </div>
+              <ul>
+                {{#each replys}}
+                  <div class="replyContainer">
+                    {{reply}}
+                  </div>
+                {{/each}}
+              </ul>
+            </li>
+          </ul>
         </div>
     {{/each}}
   </div>
@@ -26,7 +32,7 @@
 </template>
 
 <template name="replyComment">
-  <div>
+  <div class="replyComment">
     <form class="reply">
       <p>Yorum'a yorum</p>
       <textarea class="textarea" name="reply" value= "Cevabınız?"></textarea>
